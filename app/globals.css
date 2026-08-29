@@ -58,6 +58,22 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/*
+ * [data-reveal] children momentarily sit translated up to 52px outside
+ * their box before the scroll-triggered IntersectionObserver reveals them
+ * (see the reveal system in page.tsx). On real mobile browsers that
+ * pre-reveal offset is read as genuine scrollable content and widens the
+ * layout viewport before the first scroll/touch event — producing a
+ * lateral white strip and a fixed CTA that's wider than the screen.
+ * Scoping the clip to `main` (rather than only on body) contains it at the
+ * source without touching position:fixed children like .mobile-cta /
+ * .scroll-progress, which stay anchored to the true viewport since `main`
+ * has no transform of its own.
+ */
+main {
+  overflow-x: hidden;
+}
+
 body::before {
   content: "";
   position: fixed;
@@ -304,13 +320,13 @@ a, button { -webkit-tap-highlight-color: transparent; }
   letter-spacing: 0.05em;
 }
 
-.text-link span {
-  font-family: sans-serif;
-  font-size: 17px;
+.text-link-arrow {
+  flex: none;
+  display: block;
   transition: transform 220ms ease;
 }
 
-.text-link:hover span { transform: translate(4px, 4px); }
+.text-link:hover .text-link-arrow { transform: translate(3px, 3px); }
 
 .hero-art {
   position: absolute;
@@ -1596,7 +1612,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 }
 
 @media (max-width: 580px) {
-  body { padding-bottom: 62px; }
+  body { padding-bottom: calc(62px + env(safe-area-inset-bottom, 0px)); }
   .page-shell { width: min(100% - 32px, 1240px); }
   .brand { width: 148px; }
   .button-small { min-height: 38px; padding-inline: 17px; }
@@ -1734,15 +1750,18 @@ a, button { -webkit-tap-highlight-color: transparent; }
     left: 0;
     right: 0;
     bottom: 0;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 20px env(safe-area-inset-bottom, 0px);
     background: var(--burgundy);
     color: white;
     font-size: 11px;
     font-weight: 720;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    text-align: center;
     box-shadow: 0 -8px 26px rgba(53, 16, 29, 0.2);
   }
 }
