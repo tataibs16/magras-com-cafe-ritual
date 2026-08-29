@@ -2949,8 +2949,9 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .storyboard-viewport {
     margin-top: 66px;
     padding-left: 24px;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity;
     overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   .storyboard-rail {
@@ -4344,7 +4345,8 @@ body::before {
     padding: 30px 24px 34px;
     overflow-x: auto;
     overscroll-behavior-inline: contain;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
 
@@ -4573,12 +4575,12 @@ body::before {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 40%);
   }
 
-  .site-header { height: 64px; }
+  .site-header { height: 56px; }
 
   .hero-copy {
     min-height: 0;
     align-items: flex-start;
-    padding: 18px 0 32px;
+    padding: 12px 0 32px;
   }
 
   .hero-copy-inner {
@@ -4625,8 +4627,8 @@ body::before {
   .hero-mobile-media {
     display: block;
     position: relative;
-    width: 82%;
-    margin: 16px 0 0 auto;
+    width: 76%;
+    margin: 14px 0 0 auto;
     aspect-ratio: 4 / 5;
     overflow: hidden;
     border-radius: 0 40px 0 0;
@@ -4645,7 +4647,7 @@ body::before {
     position: relative;
     z-index: 2;
     width: max-content;
-    max-width: calc(82% - 24px);
+    max-width: calc(76% - 24px);
     margin: -28px 0 0 18px;
     padding: 6px 14px 7px;
     border-radius: 999px;
@@ -4658,7 +4660,7 @@ body::before {
   }
 
   .hero-copy .hero-buttons {
-    margin-top: 16px;
+    margin-top: 12px;
     flex-direction: column;
     align-items: flex-start;
     gap: 14px;
