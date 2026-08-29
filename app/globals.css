@@ -3741,7 +3741,7 @@ body::before {
 }
 
 .care-campaign-flow .story {
-  width: calc(100% - clamp(0px, 3vw, 48px));
+  width: 100%;
   min-height: 600px;
   z-index: 3;
   margin: -72px 0 0 auto;
@@ -3751,9 +3751,9 @@ body::before {
 
 .care-campaign-flow .story-photo {
   align-self: start;
-  height: 700px;
+  height: 820px;
   min-height: 0;
-  clip-path: polygon(0 0, 96% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 98% 0, 100% 100%, 0 100%);
 }
 
 .care-campaign-flow .story-copy {
@@ -4190,7 +4190,7 @@ body::before {
   }
 
   .care-campaign-flow .story-photo {
-    height: 520px;
+    height: 640px;
   }
 
   .care-campaign-flow .story-product-stage {
@@ -4398,7 +4398,7 @@ body::before {
   }
 
   .care-campaign-flow .story-photo {
-    height: 420px;
+    height: 500px;
   }
 
   .care-campaign-flow .story-copy {
