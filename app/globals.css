@@ -644,7 +644,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   z-index: 1;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, transparent 46%, #f8eee4 88%);
+  background: linear-gradient(180deg, transparent 68%, #f8eee4 94%);
 }
 
 .story-photo-caption {
@@ -830,6 +830,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
 .ingredient-visual span {
   position: absolute;
+  z-index: 2;
   left: 28px;
   bottom: 28px;
   padding: 0 0 7px;
@@ -1515,8 +1516,8 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .ingredients-layout {
     grid-template-columns: 1fr;
     grid-template-areas:
-      "intro"
       "visual"
+      "intro"
       "list";
   }
 
@@ -3232,7 +3233,16 @@ body::before {
 }
 
 .ingredient-visual img {
-  object-position: 51% center;
+  object-position: 51% top;
+}
+
+.ingredient-visual::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 40%, #2a1612 82%);
 }
 
 .ingredient-list article:nth-child(odd) {
@@ -3741,7 +3751,7 @@ body::before {
 
 .care-campaign-flow .story-photo {
   align-self: start;
-  height: 560px;
+  height: 380px;
   min-height: 0;
   clip-path: polygon(0 0, 96% 0, 100% 100%, 0 100%);
 }
@@ -3770,9 +3780,10 @@ body::before {
 }
 
 .care-campaign-flow .ingredient-visual {
-  min-height: 820px;
+  height: 400px;
+  min-height: 0;
   margin-top: 42px;
-  margin-bottom: -132px;
+  margin-bottom: -42px;
   z-index: 5;
   border-radius: 0;
   clip-path: polygon(0 0, 100% 7%, 94% 100%, 0 94%);
@@ -3791,8 +3802,9 @@ body::before {
   position: relative;
   z-index: 2;
   padding: 80px 0 154px;
+  border-top: 1px solid rgba(255, 245, 235, 0.14);
   background:
-    linear-gradient(180deg, #2a1612 0 285px, #f3e6da 285px 100%);
+    linear-gradient(180deg, #2a1612 0 320px, #f3e6da 320px 100%);
 }
 
 .care-campaign-flow .ritual-section::after {
@@ -4158,8 +4170,12 @@ body::before {
     margin-top: -36px;
   }
 
+  .care-campaign-flow .story-photo {
+    height: 300px;
+  }
+
   .care-campaign-flow .story-product-stage {
-    bottom: -92px;
+    bottom: -330px;
   }
 
   .care-campaign-flow .ingredients-section {
@@ -4168,8 +4184,8 @@ body::before {
   }
 
   .care-campaign-flow .ingredient-visual {
-    min-height: 650px;
-    margin-bottom: -74px;
+    height: 340px;
+    margin-bottom: -24px;
   }
 
   .care-campaign-flow .ritual-section {
@@ -4363,7 +4379,7 @@ body::before {
   }
 
   .care-campaign-flow .story-photo {
-    height: 420px;
+    height: 210px;
   }
 
   .care-campaign-flow .story-copy {
@@ -4376,9 +4392,9 @@ body::before {
   }
 
   .care-campaign-flow .ingredient-visual {
-    min-height: 530px;
-    margin-top: 44px;
-    margin-bottom: -42px;
+    height: 280px;
+    margin-top: 24px;
+    margin-bottom: 0;
     clip-path: polygon(0 0, 100% 4%, 96% 100%, 0 94%);
   }
 
