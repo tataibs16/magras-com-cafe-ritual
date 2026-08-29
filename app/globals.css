@@ -1763,6 +1763,21 @@ a, button { -webkit-tap-highlight-color: transparent; }
     text-transform: uppercase;
     text-align: center;
     box-shadow: 0 -8px 26px rgba(53, 16, 29, 0.2);
+    /*
+     * Hidden by default: it must not appear while the hero is still on
+     * screen (see the IntersectionObserver in page.tsx watching .hero).
+     * .is-visible is toggled once the hero has scrolled past.
+     */
+    opacity: 0;
+    translate: 0 12px;
+    pointer-events: none;
+    transition: opacity 280ms ease, translate 280ms ease;
+  }
+
+  .mobile-cta.is-visible {
+    opacity: 1;
+    translate: 0 0;
+    pointer-events: auto;
   }
 }
 
@@ -4577,6 +4592,13 @@ body::before {
 
   .site-header { height: 56px; }
 
+  /* Keep it a quiet navigation shortcut, not a second hero CTA competing with the headline. */
+  .site-header .button-small {
+    min-height: 32px;
+    padding-inline: 13px;
+    font-size: 9px;
+  }
+
   .hero-copy {
     min-height: 0;
     align-items: flex-start;
@@ -4615,23 +4637,25 @@ body::before {
   }
 
   /*
-   * The image sits at 82% width, pinned to the right edge, instead of full
-   * bleed: at 4:5 (the shortest ratio the art direction allows) a full-width
-   * block alone runs ~450px tall on a 390px phone, which is what pushed
-   * "Quero meu ritual" behind the fixed bottom CTA on every common device
-   * height (667–932px) — the two bars visually collided. Trimming the width
-   * buys back enough height for the button to clear that zone while keeping
-   * the photo as the dominant element and adding a small intentional
-   * asymmetry instead of a centered, generic crop.
+   * Full-bleed on purpose: a contained "card" (rounded corners, inset
+   * width) read as a small e-commerce component sitting under the copy,
+   * not an editorial photo. Breaking it out to the true viewport width —
+   * independent of .hero-copy's own page-shell padding — gives it the
+   * scale and separation from "text column" the art direction wants,
+   * while the text above stays comfortably inset. The 50vw technique
+   * centers it on the viewport regardless of the parent's own padding;
+   * `overflow-x: hidden` on `main` is the safety net if any sub-pixel
+   * rounding ever pushes it a hair past 100vw.
    */
   .hero-mobile-media {
     display: block;
     position: relative;
-    width: 76%;
-    margin: 14px 0 0 auto;
-    aspect-ratio: 4 / 5;
+    left: 50%;
+    width: 100vw;
+    margin: 8px 0 0;
+    margin-left: -50vw;
+    aspect-ratio: 1 / 1.12;
     overflow: hidden;
-    border-radius: 0 40px 0 0;
     background: var(--sand);
   }
 
@@ -4640,18 +4664,18 @@ body::before {
     height: 100%;
     display: block;
     object-fit: cover;
-    object-position: 60% center;
+    object-position: 60% 30%;
   }
 
   .hero-copy .hero-script {
     position: relative;
     z-index: 2;
     width: max-content;
-    max-width: calc(76% - 24px);
-    margin: -28px 0 0 18px;
+    max-width: calc(100% - 48px);
+    margin: -30px 0 0 24px;
     padding: 6px 14px 7px;
     border-radius: 999px;
-    background: rgba(255, 250, 244, 0.86);
+    background: rgba(255, 250, 244, 0.9);
     backdrop-filter: blur(6px);
     color: var(--burgundy);
     font-size: 17px;
@@ -4660,15 +4684,14 @@ body::before {
   }
 
   .hero-copy .hero-buttons {
-    margin-top: 12px;
+    margin-top: 16px;
     flex-direction: column;
     align-items: flex-start;
     gap: 14px;
   }
 
   .hero-copy .hero-buttons .button {
-    width: auto;
-    min-width: 210px;
+    width: 88%;
   }
 
   .hero-trust { display: none; }

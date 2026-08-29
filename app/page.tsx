@@ -168,6 +168,28 @@ export default function Home() {
 
     revealItems.forEach((item) => observer?.observe(item));
 
+    // The sticky mobile CTA must stay hidden while the hero itself is on
+    // screen — it used to appear mid-hero purely based on scroll distance,
+    // cutting across the hero photo and fighting the hero's own CTA for
+    // attention. Gate it on the hero's real visibility instead of a guessed
+    // scroll offset, so it only slides in once the hero has actually left.
+    const heroEl = document.querySelector<HTMLElement>(".hero");
+    const stickyCta = document.querySelector<HTMLElement>(".mobile-cta");
+    const ctaObserver =
+      heroEl && stickyCta && !reducedMotion && "IntersectionObserver" in window
+        ? new IntersectionObserver(
+            ([entry]) => {
+              stickyCta.classList.toggle("is-visible", !entry.isIntersecting);
+            },
+            { threshold: 0, rootMargin: "0px 0px -12% 0px" },
+          )
+        : null;
+    if (ctaObserver && heroEl) {
+      ctaObserver.observe(heroEl);
+    } else if (stickyCta) {
+      stickyCta.classList.add("is-visible");
+    }
+
     let frame = 0;
     const updateScrollEffects = () => {
       frame = 0;
@@ -197,6 +219,7 @@ export default function Home() {
 
     return () => {
       observer?.disconnect();
+      ctaObserver?.disconnect();
       window.removeEventListener("scroll", requestScrollUpdate);
       window.removeEventListener("resize", requestScrollUpdate);
       if (frame) window.cancelAnimationFrame(frame);
