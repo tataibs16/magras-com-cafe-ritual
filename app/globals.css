@@ -4539,3 +4539,135 @@ body::before {
     animation: none !important;
   }
 }
+
+/* ==========================================================================
+   Hero mobile — dedicated editorial structure (≤580px only)
+   --------------------------------------------------------------------------
+   Desktop and tablet (>580px) keep the existing hero completely untouched:
+   the composition, the background-image technique, the headline scale and
+   the CSS above all still apply exactly as before. .hero-mobile-media stays
+   display:none above this breakpoint, so nothing here is ever visible there.
+
+   Below 580px the hero stops trying to be "desktop, but narrower": the
+   product photo moves out of the section's CSS background (which had no
+   real relationship to the text stacked on top of it) and into its own
+   <img> inside .hero-mobile-media — a dedicated, independently-sized media
+   block between the copy and the CTA. That block is deliberately built as
+   a plain <img> in a fixed-aspect-ratio box (not a background offset) so
+   swapping in a real mobile-specific photo later is a one-line src change.
+   The current /hero-cream-product.webp is only a placeholder for that slot.
+   ========================================================================== */
+
+.hero-mobile-media {
+  display: none;
+}
+
+@media (max-width: 580px) {
+  .hero {
+    min-height: 0;
+    background-image: none;
+    background-color: var(--cream);
+  }
+
+  .hero::before {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 40%);
+  }
+
+  .site-header { height: 64px; }
+
+  .hero-copy {
+    min-height: 0;
+    align-items: flex-start;
+    padding: 18px 0 32px;
+  }
+
+  .hero-copy-inner {
+    width: 100%;
+  }
+
+  .hero-copy .eyebrow {
+    margin-bottom: 8px;
+    font-size: 10px;
+  }
+
+  .hero-copy h1 {
+    max-width: 100%;
+    font-size: clamp(30px, 8.2vw, 38px);
+    letter-spacing: -0.03em;
+    line-height: 0.98;
+  }
+
+  .hero-copy h1 span {
+    margin-top: 6px;
+    font-size: 0.7em;
+    font-weight: 380;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+  }
+
+  .hero-copy .hero-description {
+    max-width: 100%;
+    margin-top: 10px;
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+
+  /*
+   * The image sits at 82% width, pinned to the right edge, instead of full
+   * bleed: at 4:5 (the shortest ratio the art direction allows) a full-width
+   * block alone runs ~450px tall on a 390px phone, which is what pushed
+   * "Quero meu ritual" behind the fixed bottom CTA on every common device
+   * height (667–932px) — the two bars visually collided. Trimming the width
+   * buys back enough height for the button to clear that zone while keeping
+   * the photo as the dominant element and adding a small intentional
+   * asymmetry instead of a centered, generic crop.
+   */
+  .hero-mobile-media {
+    display: block;
+    position: relative;
+    width: 82%;
+    margin: 16px 0 0 auto;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 0 40px 0 0;
+    background: var(--sand);
+  }
+
+  .hero-mobile-media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: 60% center;
+  }
+
+  .hero-copy .hero-script {
+    position: relative;
+    z-index: 2;
+    width: max-content;
+    max-width: calc(82% - 24px);
+    margin: -28px 0 0 18px;
+    padding: 6px 14px 7px;
+    border-radius: 999px;
+    background: rgba(255, 250, 244, 0.86);
+    backdrop-filter: blur(6px);
+    color: var(--burgundy);
+    font-size: 17px;
+    line-height: 1;
+    transform: none;
+  }
+
+  .hero-copy .hero-buttons {
+    margin-top: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .hero-copy .hero-buttons .button {
+    width: auto;
+    min-width: 210px;
+  }
+
+  .hero-trust { display: none; }
+}

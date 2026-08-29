@@ -204,9 +204,9 @@ export default function Home() {
   }, []);
 
   return (
-    <main id="inicio">
+    <>
       <div className="scroll-progress" aria-hidden="true" />
-
+      <main id="inicio">
       <section className="hero">
         <header className="site-header page-shell">
           <Brand />
@@ -236,6 +236,10 @@ export default function Home() {
               Uma fórmula concentrada para hidratar, melhorar a textura da pele
               e transformar o cuidado com o abdômen em um ritual só seu.
             </p>
+            <div className="hero-mobile-media" aria-hidden="true">
+              {/* Placeholder asset — swap for a dedicated mobile hero photo (e.g. hero-mobile.webp) later. */}
+              <img src="/hero-cream-product.webp" alt="" loading="eager" />
+            </div>
             <p className="hero-script" aria-hidden="true">do seu jeito, todos os dias</p>
             <div className="hero-buttons">
               <a className="button" href="#comprar">
@@ -704,7 +708,8 @@ export default function Home() {
         </div>
       </footer>
 
+      </main>
       <a className="mobile-cta" href="#comprar">Quero meu Body Cream</a>
-    </main>
+    </>
   );
 }
