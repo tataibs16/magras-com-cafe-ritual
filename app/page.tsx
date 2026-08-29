@@ -412,7 +412,7 @@ export default function Home() {
       <section className="story" id="sobre" aria-labelledby="story-title">
         <div className="story-photo" data-reveal="clip">
           <img
-            src="/body-cream-ritual.png"
+            src="/body-cream-ritual.jpg"
             alt="Mulher aplicando creme na região do abdômen"
             loading="lazy"
           />
@@ -469,7 +469,7 @@ export default function Home() {
 
           <div className="ingredient-visual" data-reveal="up">
             <img
-              src="/ingredients-still-life.png"
+              src="/ingredients-still-life.jpg"
               alt="Creme corporal com café, cupuaçu e amêndoas"
               loading="lazy"
             />
