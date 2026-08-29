@@ -649,8 +649,9 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
 .story-photo-caption {
   position: absolute;
+  z-index: 2;
   left: 32px;
-  bottom: 30px;
+  bottom: 70px;
   padding: 10px 16px;
   border: 1px solid rgba(255,255,255,0.55);
   border-radius: 999px;

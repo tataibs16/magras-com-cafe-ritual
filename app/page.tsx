@@ -242,7 +242,23 @@ export default function Home() {
                 Quero meu ritual
               </a>
               <a className="text-link" href="#sobre">
-                Conhecer a experiência <span aria-hidden="true">↘</span>
+                Conhecer a experiência
+                <svg
+                  className="text-link-arrow"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3.5 3.5L10.5 10.5M10.5 10.5V5M10.5 10.5H5"
+                    stroke="currentColor"
+                    strokeWidth="1.3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </a>
             </div>
           </div>
