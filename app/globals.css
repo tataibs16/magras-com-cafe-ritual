@@ -454,13 +454,6 @@ a, button { -webkit-tap-highlight-color: transparent; }
     var(--paper);
 }
 
-.benefits > .page-shell {
-  display: grid;
-  grid-template-columns: minmax(290px, 0.68fr) minmax(0, 1.32fr);
-  gap: clamp(72px, 9vw, 142px);
-  align-items: start;
-}
-
 .section-intro {
   position: sticky;
   top: 64px;
@@ -642,7 +635,16 @@ a, button { -webkit-tap-highlight-color: transparent; }
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: center 58%;
+  object-position: center top;
+}
+
+.story-photo::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 46%, #f8eee4 88%);
 }
 
 .story-photo-caption {
@@ -746,7 +748,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .ingredients-wave {
   width: 240px;
   position: absolute;
-  right: 3vw;
+  right: max(3vw, 70px);
   top: 48px;
   opacity: 0.08;
   filter: invert(1) sepia(0.5);
@@ -1393,7 +1395,6 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .hero-copy-inner { width: min(610px, 58%); }
   .hero h1 { font-size: 70px; }
 
-  .benefits > .page-shell { gap: 58px; }
   .benefit-card:nth-child(2),
   .benefit-card:nth-child(4) { margin-left: 28px; }
   .benefit-card > div { grid-template-columns: 1fr; gap: 10px; }
@@ -1475,7 +1476,6 @@ a, button { -webkit-tap-highlight-color: transparent; }
     gap: 24px;
   }
 
-  .benefits > .page-shell { grid-template-columns: 1fr; gap: 54px; }
   .section-intro { position: static; }
   .benefit-card:nth-child(2),
   .benefit-card:nth-child(4) { margin-left: 0; }
@@ -3393,7 +3393,7 @@ body::before {
 
   .story-product-stage {
     width: 235px;
-    right: -8px;
+    right: 4px;
     bottom: -72px;
   }
 
@@ -3586,8 +3586,8 @@ body::before {
   position: absolute;
   z-index: 1;
   left: -0.03em;
-  bottom: 72px;
-  color: rgba(80, 26, 43, 0.035);
+  bottom: 460px;
+  color: rgba(80, 26, 43, 0.09);
   font-family: var(--display);
   font-size: clamp(150px, 17vw, 250px);
   font-weight: 680;
@@ -3732,7 +3732,7 @@ body::before {
 
 .care-campaign-flow .story {
   width: calc(100% - clamp(0px, 3vw, 48px));
-  min-height: 850px;
+  min-height: 600px;
   z-index: 3;
   margin: -72px 0 0 auto;
   border-bottom: 0;
@@ -3740,17 +3740,19 @@ body::before {
 }
 
 .care-campaign-flow .story-photo {
-  min-height: 850px;
+  align-self: start;
+  height: 560px;
+  min-height: 0;
   clip-path: polygon(0 0, 96% 0, 100% 100%, 0 100%);
 }
 
 .care-campaign-flow .story-copy {
-  padding-bottom: 230px;
+  padding-bottom: 90px;
 }
 
 .care-campaign-flow .story-product-stage {
   z-index: 7;
-  bottom: -255px;
+  bottom: -430px;
 }
 
 .care-campaign-flow .ingredients-section {
@@ -4263,7 +4265,7 @@ body::before {
   }
 
   .benefits-life-window {
-    width: calc(100% + 46px);
+    width: calc(100% - 12px);
     min-height: 570px;
     margin-left: 28px;
     clip-path: polygon(5% 0, 100% 0, 100% 100%, 0 94%);
@@ -4361,11 +4363,11 @@ body::before {
   }
 
   .care-campaign-flow .story-photo {
-    min-height: 620px;
+    height: 420px;
   }
 
   .care-campaign-flow .story-copy {
-    padding-bottom: 276px;
+    padding-bottom: 64px;
   }
 
   .care-campaign-flow .ingredients-section {
