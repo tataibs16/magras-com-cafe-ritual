@@ -635,7 +635,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
 }
 
 .story-photo::after {
@@ -644,7 +644,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   z-index: 1;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, transparent 68%, #f8eee4 94%);
+  background: linear-gradient(180deg, transparent 88%, #f8eee4 100%);
 }
 
 .story-photo-caption {
@@ -3233,7 +3233,7 @@ body::before {
 }
 
 .ingredient-visual img {
-  object-position: 51% top;
+  object-position: 82% center;
 }
 
 .ingredient-visual::after {
@@ -3242,7 +3242,7 @@ body::before {
   z-index: 1;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, transparent 40%, #2a1612 82%);
+  background: linear-gradient(180deg, transparent 88%, #2a1612 100%);
 }
 
 .ingredient-list article:nth-child(odd) {
@@ -3751,13 +3751,13 @@ body::before {
 
 .care-campaign-flow .story-photo {
   align-self: start;
-  height: 380px;
+  height: 700px;
   min-height: 0;
   clip-path: polygon(0 0, 96% 0, 100% 100%, 0 100%);
 }
 
 .care-campaign-flow .story-copy {
-  padding-bottom: 90px;
+  padding-bottom: 140px;
 }
 
 .care-campaign-flow .story-product-stage {
@@ -3780,7 +3780,7 @@ body::before {
 }
 
 .care-campaign-flow .ingredient-visual {
-  height: 400px;
+  height: 750px;
   min-height: 0;
   margin-top: 42px;
   margin-bottom: -42px;
@@ -4171,7 +4171,7 @@ body::before {
   }
 
   .care-campaign-flow .story-photo {
-    height: 300px;
+    height: 520px;
   }
 
   .care-campaign-flow .story-product-stage {
@@ -4184,7 +4184,7 @@ body::before {
   }
 
   .care-campaign-flow .ingredient-visual {
-    height: 340px;
+    height: 620px;
     margin-bottom: -24px;
   }
 
@@ -4379,7 +4379,7 @@ body::before {
   }
 
   .care-campaign-flow .story-photo {
-    height: 210px;
+    height: 420px;
   }
 
   .care-campaign-flow .story-copy {
@@ -4392,7 +4392,7 @@ body::before {
   }
 
   .care-campaign-flow .ingredient-visual {
-    height: 280px;
+    height: 460px;
     margin-top: 24px;
     margin-bottom: 0;
     clip-path: polygon(0 0, 100% 4%, 96% 100%, 0 94%);
