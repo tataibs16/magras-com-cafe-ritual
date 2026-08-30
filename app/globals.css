@@ -1612,7 +1612,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 }
 
 @media (max-width: 580px) {
-  body { padding-bottom: calc(62px + env(safe-area-inset-bottom, 0px)); }
+  body { padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
   .page-shell { width: min(100% - 32px, 1240px); }
   .brand { width: 148px; }
   .button-small { min-height: 38px; padding-inline: 17px; }
@@ -1743,18 +1743,30 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .footer-grid > .brand,
   .copyright { grid-column: 1 / -1; }
 
+  /*
+   * A flush, edge-to-edge bar sitting exactly at bottom:0 reads as "cut off"
+   * on real phones: it butts straight into whichever browser chrome (Safari's
+   * bottom bar, Android's gesture strip, in-app browser UI) happens to be
+   * showing, with zero breathing room of its own. Floating it — margins on
+   * every side, real distance from the safe area rather than flush against
+   * it, pill-shaped like the rest of the button system — means it never
+   * touches an edge the browser might also be occupying, on any device.
+   */
   .mobile-cta {
-    min-height: 62px;
+    min-height: 56px;
     position: fixed;
     z-index: 30;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
+    left: 16px;
+    right: 16px;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 14px);
+    width: auto;
+    max-width: 480px;
+    margin-inline: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 20px env(safe-area-inset-bottom, 0px);
+    padding: 0 28px;
+    border-radius: 999px;
     background: var(--burgundy);
     color: white;
     font-size: 11px;
@@ -1762,7 +1774,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
     letter-spacing: 0.1em;
     text-transform: uppercase;
     text-align: center;
-    box-shadow: 0 -8px 26px rgba(53, 16, 29, 0.2);
+    box-shadow: 0 14px 34px rgba(53, 16, 29, 0.32);
     /*
      * Hidden by default: it must not appear while the hero is still on
      * screen (see the IntersectionObserver in page.tsx watching .hero).
