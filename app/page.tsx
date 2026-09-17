@@ -259,10 +259,6 @@ export default function Home() {
               Uma fórmula concentrada para hidratar, melhorar a textura da pele
               e transformar o cuidado com o abdômen em um ritual só seu.
             </p>
-            <div className="hero-mobile-media" aria-hidden="true">
-              {/* Placeholder asset — swap for a dedicated mobile hero photo (e.g. hero-mobile.webp) later. */}
-              <img src="/hero-cream-product.webp" alt="" loading="eager" />
-            </div>
             <p className="hero-script" aria-hidden="true">do seu jeito, todos os dias</p>
             <div className="hero-buttons">
               <a className="button" href="#comprar">
@@ -691,6 +687,16 @@ export default function Home() {
             Um cuidado sensorial, direcionado e possível para se sentir bem
             todos os dias.
           </p>
+          <div className="purchase-pricing" aria-label="Opções de compra">
+            <div className="purchase-price-option">
+              <span className="purchase-price-label">1 frasco</span>
+              <strong className="purchase-price-value">R$ 127</strong>
+            </div>
+            <div className="purchase-price-option">
+              <span className="purchase-price-label">3 frascos</span>
+              <strong className="purchase-price-value">R$ 197</strong>
+            </div>
+          </div>
           <a className="button button-light" href="#inicio">
             Quero meu Body Cream
           </a>
