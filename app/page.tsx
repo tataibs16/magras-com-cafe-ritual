@@ -262,7 +262,7 @@ export default function Home() {
             <p className="hero-script" aria-hidden="true">do seu jeito, todos os dias</p>
             <div className="hero-buttons">
               <a className="button" href="#comprar">
-                Quero meu ritual
+                Comprar
               </a>
               <a className="text-link" href="#sobre">
                 Conhecer a experiência
