@@ -315,8 +315,11 @@ a, button { -webkit-tap-highlight-color: transparent; }
   padding: 0 44px;
   border-color: #1f3a24;
   background: #1f3a24;
-  font-size: 14px;
+  font-size: 15px;
 }
+
+.hero-copy .eyebrow { font-size: 12px; }
+.hero-buttons .text-link { font-size: 13px; }
 
 .hero-buttons .button:hover {
   background: #142818;
@@ -2093,7 +2096,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
 .hero h1 {
   max-width: 660px;
-  font-size: clamp(62px, 5.2vw, 79px);
+  font-size: clamp(68px, 5.7vw, 87px);
   line-height: 0.9;
 }
 
@@ -2107,14 +2110,14 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
 .hero-description {
   max-width: 485px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .hero-script {
   width: max-content;
   margin: 9px 0 -11px 240px;
   color: rgba(80, 26, 43, 0.66);
-  font-size: 30px;
+  font-size: 33px;
   transform: rotate(-4deg);
 }
 
@@ -4643,9 +4646,9 @@ body::before {
     display: flex;
     flex-direction: column;
     background-image:
-      linear-gradient(180deg, transparent 0%, transparent calc(100% - 420px), rgba(255, 250, 244, 0.85) calc(100% - 350px), rgba(255, 250, 244, 0.97) calc(100% - 300px), var(--cream) 100%),
+      linear-gradient(180deg, transparent 0%, transparent calc(100% - 455px), rgba(255, 250, 244, 0.85) calc(100% - 385px), rgba(255, 250, 244, 0.97) calc(100% - 335px), var(--cream) 100%),
       url("/hero-mobile.jpg");
-    background-position: center, center calc(100svh - 310px - 167vw);
+    background-position: center, center calc(100svh - 345px - 167vw);
     background-size: cover, 100% auto;
     background-color: var(--cream);
   }
@@ -4677,12 +4680,12 @@ body::before {
 
   .hero-copy .eyebrow {
     margin-bottom: 8px;
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .hero-copy h1 {
     max-width: 100%;
-    font-size: clamp(30px, 8.2vw, 38px);
+    font-size: clamp(34px, 9.2vw, 42px);
     letter-spacing: -0.03em;
     line-height: 0.98;
   }
@@ -4698,7 +4701,7 @@ body::before {
   .hero-copy .hero-description {
     max-width: 100%;
     margin-top: 10px;
-    font-size: 14.5px;
+    font-size: 15.5px;
     line-height: 1.5;
   }
 
@@ -4707,7 +4710,7 @@ body::before {
     max-width: calc(100% - 48px);
     margin: 14px 0 0 4px;
     color: rgba(80, 26, 43, 0.72);
-    font-size: 18px;
+    font-size: 20px;
     transform: none;
   }
 
