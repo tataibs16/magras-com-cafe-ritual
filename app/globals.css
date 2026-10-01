@@ -4637,14 +4637,15 @@ body::before {
 @media (max-width: 580px) {
   .hero {
     /* Banner is 411x827 (≈2.01:1): photo sits at the top, copy at the bottom over a cream fade. */
-    /* -40vw skips the photo's plain cream top so the jars sit right under the header. */
-    min-height: calc(127vw + 380px);
+    /* One screen tall so the whole copy fits above the fold; the photo is pulled up so the
+       jars (≈28%–83% of its 201vw height) end where the copy starts. */
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
     background-image:
-      linear-gradient(180deg, transparent 0%, transparent 50%, rgba(255, 250, 244, 0.85) 60%, rgba(255, 250, 244, 0.97) 68%, var(--cream) 100%),
+      linear-gradient(180deg, transparent 0%, transparent calc(100% - 420px), rgba(255, 250, 244, 0.85) calc(100% - 350px), rgba(255, 250, 244, 0.97) calc(100% - 300px), var(--cream) 100%),
       url("/hero-mobile.jpg");
-    background-position: center, center -40vw;
+    background-position: center, center calc(100svh - 310px - 167vw);
     background-size: cover, 100% auto;
     background-color: var(--cream);
   }
@@ -4667,7 +4668,7 @@ body::before {
   .hero-copy {
     min-height: 0;
     align-items: flex-start;
-    padding: 12px 0 32px;
+    padding: 12px 0 22px;
   }
 
   .hero-copy-inner {
