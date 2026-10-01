@@ -313,14 +313,14 @@ a, button { -webkit-tap-highlight-color: transparent; }
   min-width: min(320px, 100%);
   min-height: 62px;
   padding: 0 44px;
-  border-color: #4b5320;
-  background: #4b5320;
+  border-color: #1f3a24;
+  background: #1f3a24;
   font-size: 14px;
 }
 
 .hero-buttons .button:hover {
-  background: #3a4118;
-  box-shadow: 0 14px 30px rgba(42, 48, 18, 0.22);
+  background: #142818;
+  box-shadow: 0 14px 30px rgba(15, 32, 19, 0.25);
 }
 
 .text-link {
