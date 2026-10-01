@@ -4629,21 +4629,18 @@ body::before {
    above all still apply exactly as before.
 
    Below 580px the headline scale, compact spacing and earlier CTA stay,
-   but the photo is the section's own CSS background — same
-   /hero-cream-product.webp file the desktop hero uses, same "cover"
-   technique — just re-framed for a tall, narrow viewport instead of a wide
-   one: cover's math on a portrait box against this landscape photo
-   naturally crops to a vertical slice, and background-position picks which
-   slice (the product side, right of center).
+   but the photo is the section's own CSS background using the dedicated
+   portrait banner /hero-mobile.jpg, anchored to the bottom so the jars sit
+   below the copy while the plain cream top of the photo carries the text.
    ========================================================================== */
 
 @media (max-width: 580px) {
   .hero {
     min-height: max(680px, 88svh);
     background-image:
-      linear-gradient(180deg, rgba(255, 250, 244, 0.96) 0%, rgba(255, 250, 244, 0.88) 30%, rgba(255, 250, 244, 0.42) 52%, rgba(255, 250, 244, 0.08) 70%, transparent 84%),
-      url("/hero-cream-product.webp");
-    background-position: center, 74% 42%;
+      linear-gradient(180deg, rgba(255, 250, 244, 0.9) 0%, rgba(255, 250, 244, 0.7) 32%, rgba(255, 250, 244, 0.25) 50%, transparent 62%),
+      url("/hero-mobile.jpg");
+    background-position: center, center bottom;
     background-size: cover, cover;
     background-color: var(--cream);
   }
