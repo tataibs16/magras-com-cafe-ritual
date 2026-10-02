@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const benefits = [
   {
@@ -127,6 +127,145 @@ const faqs = [
       "Não. A proposta da fórmula é oferecer um cuidado vegano, livre de parabenos e não testado em animais.",
   },
 ];
+
+// TODO: trocar "#comprar" pelos links reais de checkout de cada opção.
+const offers = [
+  {
+    id: "kit-3",
+    label: "3 potes",
+    tag: "Melhor escolha",
+    discount: "48% OFF",
+    perUnit: "R$ 65,67/cada",
+    total: "R$ 197",
+    fullPrice: "R$ 381",
+    note: "Ritual de 3 meses",
+    image: "/potes-3.png",
+    imageAlt: "Três potes do Body Cream Barriguinha",
+    checkoutUrl: "#comprar",
+  },
+  {
+    id: "kit-1",
+    label: "1 pote",
+    tag: null,
+    discount: null,
+    perUnit: "R$ 127",
+    total: null,
+    fullPrice: null,
+    note: "Para começar o ritual",
+    image: "/pote-1.png",
+    imageAlt: "Pote do Body Cream Barriguinha",
+    checkoutUrl: "#comprar",
+  },
+];
+
+const offerHighlights = [
+  "Hidratação profunda",
+  "Firmeza e elasticidade",
+  "Textura mais uniforme",
+  "Vegano e sem parabenos",
+];
+
+function OfferSection() {
+  const [selected, setSelected] = useState(0);
+  const [slide, setSlide] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const offer = offers[selected];
+
+  useEffect(() => {
+    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setInterval(() => {
+      setSlide((current) => (current + 1) % offers.length);
+    }, 3600);
+    return () => window.clearInterval(timer);
+  }, [paused, slide]);
+
+  const choose = (index: number) => {
+    setSelected(index);
+    setSlide(index);
+  };
+
+  return (
+    <section className="offer-section" id="comprar" aria-labelledby="offer-title">
+      <div className="offer-shell page-shell">
+        <div
+          className="offer-stage"
+          data-reveal="clip"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          <div className="offer-track" style={{ translate: `${slide * -100}% 0` }}>
+            {offers.map((item, index) => (
+              <div className="offer-slide" key={item.id} aria-hidden={index !== slide}>
+                <img src={item.image} alt={item.imageAlt} loading="lazy" />
+              </div>
+            ))}
+          </div>
+          <div className="offer-dots" role="tablist" aria-label="Fotos do produto">
+            {offers.map((item, index) => (
+              <button
+                key={item.id}
+                type="button"
+                role="tab"
+                aria-selected={index === slide}
+                aria-label={item.label}
+                className={index === slide ? "is-active" : undefined}
+                onClick={() => setSlide(index)}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="offer-copy" data-reveal="right">
+          <p className="eyebrow">Escolha você. Escolha constância.</p>
+          <h2 id="offer-title">Seu ritual começa agora.</h2>
+
+          <ul className="offer-highlights">
+            {offerHighlights.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+
+          <fieldset className="offer-options">
+            <legend>Escolha a quantidade:</legend>
+            {offers.map((item, index) => (
+              <label
+                key={item.id}
+                className={`offer-option${index === selected ? " is-selected" : ""}`}
+              >
+                <input
+                  type="radio"
+                  name="offer"
+                  value={item.id}
+                  checked={index === selected}
+                  onChange={() => choose(index)}
+                />
+                {item.tag && <span className="offer-tag">{item.tag}</span>}
+                {item.discount && <span className="offer-discount">{item.discount}</span>}
+                <span className="offer-radio" aria-hidden="true" />
+                <span className="offer-option-name">
+                  <strong>{item.label}</strong>
+                  <small>{item.total ? `${item.total} no total · ${item.note}` : item.note}</small>
+                </span>
+                <span className="offer-option-price">
+                  <strong>{item.perUnit}</strong>
+                  {item.fullPrice && <s>{item.fullPrice}</s>}
+                </span>
+              </label>
+            ))}
+          </fieldset>
+
+          <a className="button offer-buy" href={offer.checkoutUrl}>
+            Comprar
+          </a>
+          <div className="offer-trust">
+            <span>Compra segura</span>
+            <span>Envio para todo Brasil</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function Brand({ stacked = false }: { stacked?: boolean }) {
   return (
@@ -672,40 +811,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="purchase-section" id="comprar" aria-labelledby="purchase-title">
-        <div className="purchase-image" data-reveal="clip">
-          <img
-            src="/campaign/car.jpg"
-            alt="Body Cream ao lado de café gelado, bolsa e chaves dentro do carro"
-            loading="lazy"
-          />
-        </div>
-        <div className="purchase-copy" data-reveal="right">
-          <p className="eyebrow">Escolha você. Escolha constância.</p>
-          <h2 id="purchase-title">Seu ritual começa agora.</h2>
-          <p>
-            Um cuidado sensorial, direcionado e possível para se sentir bem
-            todos os dias.
-          </p>
-          <div className="purchase-pricing" aria-label="Opções de compra">
-            <div className="purchase-price-option">
-              <span className="purchase-price-label">1 frasco</span>
-              <strong className="purchase-price-value">R$ 127</strong>
-            </div>
-            <div className="purchase-price-option">
-              <span className="purchase-price-label">3 frascos</span>
-              <strong className="purchase-price-value">R$ 197</strong>
-            </div>
-          </div>
-          <a className="button button-light" href="#inicio">
-            Quero meu Body Cream
-          </a>
-          <div className="purchase-trust">
-            <span>Compra segura</span>
-            <span>Envio para todo Brasil</span>
-          </div>
-        </div>
-      </section>
+      <OfferSection />
 
       <footer className="site-footer">
         <div className="page-shell footer-grid">
