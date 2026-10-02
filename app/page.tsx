@@ -167,50 +167,18 @@ const offerHighlights = [
 
 function OfferSection() {
   const [selected, setSelected] = useState(0);
-  const [slide, setSlide] = useState(0);
-  const [paused, setPaused] = useState(false);
   const offer = offers[selected];
-
-  useEffect(() => {
-    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setInterval(() => {
-      setSlide((current) => (current + 1) % offers.length);
-    }, 3600);
-    return () => window.clearInterval(timer);
-  }, [paused, slide]);
-
-  const choose = (index: number) => {
-    setSelected(index);
-    setSlide(index);
-  };
 
   return (
     <section className="offer-section" id="comprar" aria-labelledby="offer-title">
       <div className="offer-shell page-shell">
-        <div
-          className="offer-stage"
-          data-reveal="clip"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
-          <div className="offer-track" style={{ translate: `${slide * -100}% 0` }}>
+        <div className="offer-stage" data-reveal="clip">
+          {/* The photo only slides when a quantity is picked. */}
+          <div className="offer-track" style={{ translate: `${selected * -100}% 0` }}>
             {offers.map((item, index) => (
-              <div className="offer-slide" key={item.id} aria-hidden={index !== slide}>
+              <div className="offer-slide" key={item.id} aria-hidden={index !== selected}>
                 <img src={item.image} alt={item.imageAlt} loading="lazy" />
               </div>
-            ))}
-          </div>
-          <div className="offer-dots" role="tablist" aria-label="Fotos do produto">
-            {offers.map((item, index) => (
-              <button
-                key={item.id}
-                type="button"
-                role="tab"
-                aria-selected={index === slide}
-                aria-label={item.label}
-                className={index === slide ? "is-active" : undefined}
-                onClick={() => setSlide(index)}
-              />
             ))}
           </div>
         </div>
@@ -237,7 +205,7 @@ function OfferSection() {
                   name="offer"
                   value={item.id}
                   checked={index === selected}
-                  onChange={() => choose(index)}
+                  onChange={() => setSelected(index)}
                 />
                 {item.tag && <span className="offer-tag">{item.tag}</span>}
                 {item.discount && <span className="offer-discount">{item.discount}</span>}

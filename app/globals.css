@@ -4796,32 +4796,6 @@ body::before {
   50% { translate: 0 -10px; }
 }
 
-.offer-dots {
-  position: absolute;
-  z-index: 2;
-  left: 50%;
-  bottom: 22px;
-  display: flex;
-  gap: 8px;
-  translate: -50% 0;
-}
-
-.offer-dots button {
-  width: 8px;
-  height: 8px;
-  padding: 0;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(80, 26, 43, 0.25);
-  cursor: pointer;
-  transition: width 300ms ease, background-color 300ms ease;
-}
-
-.offer-dots button.is-active {
-  width: 26px;
-  background: var(--burgundy);
-}
-
 .offer-copy h2 {
   margin-top: 14px;
   color: var(--burgundy);
